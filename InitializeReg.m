@@ -1,0 +1,50 @@
+function [promem,extmem,intmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag]=InitializeReg()
+    %memory definition
+    promem=zeros(2^16,1);
+    extmem=zeros(2^16,1);
+    intmem=zeros(256,1);%including SFR in high 128B
+    idatax=zeros(128,1);
+    PC=1;
+    cycle=0;
+    ACC=0;
+    B=0;
+    PSW=zeros(8,1);
+    SP=0;
+    DPTR=0;
+    Rn=zeros(8,1);
+    C=0;
+    flag=0;
+    %2018.11.18
+    idatax(67,1)=12;
+    idatax(68,1)=5;
+    idatax(69,1)=6;
+    idatax(70,1)=11;
+    idatax(71,1)=9;
+    idatax(72,1)=0;
+    idatax(73,1)=10;
+    idatax(74,1)=13;
+    idatax(75,1)=3;
+    idatax(76,1)=14;
+    idatax(77,1)=15;
+    idatax(78,1)=8;
+    idatax(79,1)=4;
+    idatax(80,1)=7;
+    idatax(81,1)=1;
+    idatax(82,1)=2;
+    assignin('base','promem',promem);
+    assignin('base','extmem',extmem);
+    assignin('base','intmem',intmem);
+    assignin('base','idatax',idatax);
+    assignin('base','PC',PC);
+    assignin('base','cycle',cycle);
+    assignin('base','ACC',ACC);
+    assignin('base','B',B);
+    assignin('base','PSW',PSW);
+    assignin('base','SP',SP);
+    assignin('base','DPTR',DPTR);
+    assignin('base','Rn',Rn);
+    assignin('base','C',C);
+    assignin('base','flag',flag);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+end
