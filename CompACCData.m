@@ -19,8 +19,8 @@ function [PC_back,cycle_back,intmem_back]=CompACCData(PC,intmem,cycle,promem)
     
     if(ACC~=data)
         PC_back=PC+3+rel;
-        if(PC_back>2^(b+1)-1 && b>7);
-            PC_back=PC_back-2^(b+1);
+        if(rel>127);
+            PC_back=PC_back-256;
         end
     else
         PC_back=PC+3;

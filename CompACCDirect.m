@@ -18,7 +18,7 @@ function [PC_back,cycle_back,intmem_back]=CompACCDirect(PC,intmem,cycle,promem)
         
     if(ACC~=data)
         PC_back=PC+3+rel;
-        if(rel>127-1);
+        if(rel>127);
             PC_back=PC_back-256;
         end
     else

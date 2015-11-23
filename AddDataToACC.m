@@ -17,7 +17,7 @@ function [PC_back,cycle_back,intmem_back]=AddDataToACC(PC,cycle,intmem,promem)
     tmp=fi(add1+add2,0,8,0);
     tmp1=add1+add2;
     %CY
-    if (tmp.data>127)
+    if (add1<128 && tmp.data>127)
         CY=1;
     else
         CY=0;

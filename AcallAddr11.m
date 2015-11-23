@@ -23,7 +23,7 @@ function [PC_back,cycle_back,intmem_back,idatax_back]=AcallAddr11(PC,cycle,intme
 %         idatax_back(SP-127,1)=data2;
 %     end
     intmem_back(SP+1,1)=data2;
-    PC_back=fix(PC/2048)+addrh*256+addrl+1;
+    PC_back=fix(PC/2048)*2048+addrh*256+addrl+1;
     %cycle count
     cycle_back=cycle+2;
 end

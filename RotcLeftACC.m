@@ -17,7 +17,7 @@ function [PC_back,cycle_back,intmem_back]=RotcLeftACC(PC,cycle,intmem)
     UN=PSW(7,1);
     P=PSW(8,1);
     
-    data=(ACC-h*127)*2+CY;
+    data=(ACC-h*128)*2+CY;
     %P
     P=0;
     pb=dec2bin(data,8);

@@ -19,13 +19,14 @@ function [PC_back,cycle_back,intmem_back]=AddcRegToACC(PC,cycle,intmem,n)
     elseif (PSW(4,1)==1 && PSW(5,1)==1)
         rn=intmem(n+24,1);
     end
+
     %add
     add1=intmem(225,1);
     add2=rn+CY;
     tmp=fi(add1+add2,0,8,0);
     tmp1=add1+add2;
     %CY
-    if (tmp.data>127)
+    if (add1<128 && tmp.data>127)
         CY=1;
     else
         CY=0;

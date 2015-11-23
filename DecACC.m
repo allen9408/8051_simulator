@@ -15,27 +15,27 @@ function [PC_back,intmem_back,cycle_back]=DecACC(PC,cycle,intmem)
     sub2=1;
     tmp=fi(sub1-sub2,0,8,0);
     tmp1=sub1-sub2;
-    %CY
-    if (sub1>127 && tmp.data<127)
-        CY=1;
-    else
-        CY=0;
-    end
-    %OV
-    if (tmp1<0)
-        OV=1;
-    else
-        OV=0;
-    end
-    %AC
-    low1=dec2bin(sub1,8);
-    low2=dec2bin(sub2,8);
-    tempa=bin2dec(low1(5:8))-bin2dec(low2(5:8));
-    if(tempa<0)
-        AC=1;
-    else
-        AC=0;
-    end
+%     %CY
+%     if (sub1>127 && tmp.data<127)
+%         CY=1;
+%     else
+%         CY=0;
+%     end
+%     %OV
+%     if (tmp1<0)
+%         OV=1;
+%     else
+%         OV=0;
+%     end
+%     %AC
+%     low1=dec2bin(sub1,8);
+%     low2=dec2bin(sub2,8);
+%     tempa=bin2dec(low1(5:8))-bin2dec(low2(5:8));
+%     if(tempa<0)
+%         AC=1;
+%     else
+%         AC=0;
+%     end
     %P
     P=0;
     pb=dec2bin(tmp.data,8);

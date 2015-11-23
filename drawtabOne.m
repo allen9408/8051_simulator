@@ -409,7 +409,7 @@ function drawtabOne(hpanel,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,
 %         [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag);
         i=0;
         branchNumber=1;
-         while (PC<=943)
+         while (PC~=4)
 %        for i=1:200
             [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,branchNumber);
             i=i+1;

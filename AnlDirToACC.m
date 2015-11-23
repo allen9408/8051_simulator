@@ -31,6 +31,6 @@ function [PC_back,cycle_back,intmem_back]=AnlDirToACC(PC,cycle,intmem,promem)
     intmem_back(225,1)=tmp;
     
     %cycle count
-    cycle_back=cycle+2;
+    cycle_back=cycle+1;
     PC_back=PC+2;
 end

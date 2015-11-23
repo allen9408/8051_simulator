@@ -6,7 +6,7 @@ function [PC_back,cycle_back,intmem_back]=RotLeftACC(PC,cycle,intmem)
     else
         h=0;
     end
-    intmem_back(225,1)=(ACC-h*127)*2+h;
+    intmem_back(225,1)=(ACC-h*128)*2+h;
     %cycle count
     cycle_back=cycle+1;
     PC_back=PC+1;
