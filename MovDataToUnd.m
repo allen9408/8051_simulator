@@ -14,7 +14,7 @@ function [PC_back,cycle_back,intmem_back,idatax_back]=MovDataToUnd(PC,cycle,intm
     end
     
     addr1=rn;
-    data=promem(PC+2,1);
+    data=promem(PC+1,1);
     
     %save data
     if(addr1<128)

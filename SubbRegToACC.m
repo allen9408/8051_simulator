@@ -24,17 +24,17 @@ function [PC_back,cycle_back,intmem_back]=SubbRegToACC(PC,cycle,intmem,n)
     sub2=rn+CY;
     tmp=fi(sub1-sub2,0,8,0);
     tmp1=sub1-sub2;
-    %CY
-    if (sub1>127 && tmp.data<127)
-        CY=1;
-    else
-        CY=0;
-    end
+%     %CY
+%     if (sub1>127 && tmp.data<127)
+%         CY=1;
+%     else
+%         CY=0;
+%     end
     %OV
     if (tmp1<0)
         OV=1;CY=1;
     else
-        OV=0;
+        OV=0;CY=0;
     end
     %AC
     low1=dec2bin(sub1,8);
@@ -57,7 +57,11 @@ function [PC_back,cycle_back,intmem_back]=SubbRegToACC(PC,cycle,intmem,n)
     
     %save PSW,Rn
     intmem_back(209,1)=savePSW(CY,AC,F0,RS1,RS0,OV,UN,P);
-    intmem_back(225,1)=tmp.data;
+    if(tmp1<0)
+        intmem_back(225,1)=tmp1+256;
+    else
+        intmem_back(225,1)=tmp.data;
+    end
     
     %cycle count
     cycle_back=cycle+1;

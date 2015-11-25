@@ -588,13 +588,14 @@ function [intmem_back,extmem_back,idatax_back,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,fl
                 
             case '33' %RLC A
                 [PC,cycle,intmem_back]=RotcLeftACC(PC,cycle,intmem_back);
+                %[PC,cycle,intmem_back]=RotLeftACC(PC,cycle,intmem_back);
                 
             case '03' %RR A
                 [PC,cycle,intmem_back]=RotRightACC(PC,cycle,intmem_back);
                 
             case '13' %RRC A
                 [PC,cycle,intmem_back]=RotcRightACC(PC,cycle,intmem_back);
-                
+                %[PC,cycle,intmem_back]=RotRightACC(PC,cycle,intmem_back);
             case 'C4' %SWAP A
                 [PC,cycle,intmem_back]=SwapACC(PC,cycle,intmem_back);
                 
