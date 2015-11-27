@@ -19,6 +19,6 @@ function [PC_back,cycle_back,intmem_back,extmem_back]=MovxACCToUnd(PC,cycle,intm
     %save data
     extmem_back(addr+1,1)=data;
     %cycle count
-    cycle_back=cycle+2;
+    cycle_back=cycle+3;
     PC_back=PC+1;
 end

@@ -48,5 +48,5 @@ function [PC_back,cycle_back,intmem_back]=CompUndData(PC,cycle,intmem,idatax,pro
     end
     intmem_back(209,1)=savePSW(CY,AC,F0,RS1,RS0,OV,UN,P);
     %cycle count
-    cycle_back=cycle+4;
+    cycle_back=cycle+5;
 end

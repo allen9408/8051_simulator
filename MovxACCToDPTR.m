@@ -11,6 +11,6 @@ function [PC_back,cycle_back,extmem_back]=MovxACCToDPTR(PC,cycle,intmem,extmem)
     extmem_back(DPTR+1)=ACC;
     
     %cycle count
-    cycle_back=cycle+1;
+    cycle_back=cycle+3;
     PC_back=PC+1;
 end

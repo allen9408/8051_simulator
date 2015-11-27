@@ -27,5 +27,5 @@ function [PC_back,cycle_back,intmem_back]=DecRegJumUnz(PC,cycle,intmem,promem,n)
     end
     
     %cycle count
-    cycle_back=cycle+2;
+    cycle_back=cycle+3;
 end

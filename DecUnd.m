@@ -46,7 +46,7 @@ function [PC_back,intmem_back,idatax_back,cycle_back]=DecUnd(PC,cycle,intmem,ida
     intmem_back(addr,1)=tmp.data;
     
     %cycle count
-    cycle_back=cycle+1;
+    cycle_back=cycle+2;
     PC_back=PC+1;
 end
     

@@ -39,6 +39,6 @@ function [PC_back,cycle_back,intmem_back]=MovxUndToACC(PC,cycle,intmem,extmem,i)
     intmem_back(209,1)=savePSW(CY,AC,F0,RS1,RS0,OV,UN,P);
     
     %cycle count
-    cycle_back=cycle+2;
+    cycle_back=cycle+3;
     PC_back=PC+1;
 end
