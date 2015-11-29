@@ -333,7 +333,10 @@ function drawtabOne(hpanel,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,
     function Step(hobj, evdt)
         [promem]=loadprogram(promem);
         branchNumber=c+1;
-        [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,branchNumber);
+        freq_count=zeros(250,2);
+        cycle_count=zeros(250,2);
+        inst_matrix=cell(250,1);
+        [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,freq_count,cycle_count,inst_matrix]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,branchNumber,freq_count,cycle_count,inst_matrix);
         tempSpec=zeros(7,1);
         tempSpec(1,1)=ACC;
         tempSpec(2,1)=B;
@@ -370,7 +373,10 @@ function drawtabOne(hpanel,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,
         StepsOnce = str2double(get(StepsForOnce,'String'))
         for i=1:StepsOnce
             branchNumber=Steps+StepsOnce;
-            [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,branchNumber);
+            freq_count=zeros(250,2);
+            cycle_count=zeros(250,2);
+            inst_matrix=cell(250,1);
+            [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,freq_count,cycle_count,inst_matrix]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,branchNumber,freq_count,cycle_count,inst_matrix);
             cycle
             PC
         end
@@ -411,7 +417,10 @@ function drawtabOne(hpanel,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,
         branchNumber=1;
          while (PC~=4)
 %        for i=1:200
-            [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,branchNumber);
+            freq_count=zeros(250,2);
+            cycle_count=zeros(250,2);
+            inst_matrix=cell(250,1);
+            [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,freq_count,cycle_count,inst_matrix]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,branchNumber,freq_count,cycle_count,inst_matrix);
             i=i+1;
             branchNumber=branchNumber+1;
         end
