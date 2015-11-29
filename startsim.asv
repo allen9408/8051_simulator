@@ -1181,104 +1181,104 @@ function [intmem_back,extmem_back,idatax_back,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,fl
             case '6A' %XRL A,Rn
                 [PC,cycle,intmem_back]=XrlACCReg(PC,cycle,intmem_back,3); 
                 freq_count(210,1)=freq_count(210,1)+1;
-                cycle_count(210,1)=cycle_count(210,1)+1;
+                cycle_count(210,1)=cycle_count(210,1)+cycle;
                 inst_matrix(210,1)=cellstr('XRL A,R2');
             case '6B' %XRL A,Rn
                 [PC,cycle,intmem_back]=XrlACCReg(PC,cycle,intmem_back,4);
                 freq_count(211,1)=freq_count(211,1)+1;
-                cycle_count(211,1)=cycle_count(211,1)+1;
+                cycle_count(211,1)=cycle_count(211,1)+cycle;
                 inst_matrix(211,1)=cellstr('XRL A,R3');
             case '6C' %XRL A,Rn
                 [PC,cycle,intmem_back]=XrlACCReg(PC,cycle,intmem_back,5);
                 freq_count(212,1)=freq_count(212,1)+1;
-                cycle_count(212,1)=cycle_count(212,1)+1;
+                cycle_count(212,1)=cycle_count(212,1)+cycle;
                 inst_matrix(212,1)=cellstr('XRL A,R4');
             case '6D' %XRL A,Rn
                 [PC,cycle,intmem_back]=XrlACCReg(PC,cycle,intmem_back,6); 
                 freq_count(213,1)=freq_count(213,1)+1;
-                cycle_count(213,1)=cycle_count(213,1)+1;
+                cycle_count(213,1)=cycle_count(213,1)+cycle;
                 inst_matrix(213,1)=cellstr('XRL A,R5');
             case '6E' %XRL A,Rn
                 [PC,cycle,intmem_back]=XrlACCReg(PC,cycle,intmem_back,7); 
                 freq_count(214,1)=freq_count(214,1)+1;
-                cycle_count(214,1)=cycle_count(214,1)+1;
+                cycle_count(214,1)=cycle_count(214,1)+cycle;
                 inst_matrix(214,1)=cellstr('XRL A,R6');
             case '6F' %XRL A,Rn
                 [PC,cycle,intmem_back]=XrlACCReg(PC,cycle,intmem_back,8);
                 freq_count(215,1)=freq_count(215,1)+1;
-                cycle_count(215,1)=cycle_count(215,1)+1;
+                cycle_count(215,1)=cycle_count(215,1)+cycle;
                 inst_matrix(215,1)=cellstr('XRL A,R7');
             
-            case '65' %XRL A,direct
+            case '65' %XRL direct
                 [PC,cycle,intmem_back]=XrlDirToACC(PC,cycle,intmem_back,promem);
                 freq_count(216,1)=freq_count(216,1)+1;
-                cycle_count(216,1)=cycle_count(216,1)+2;
-                inst_matrix(216,1)=cellstr('XRL A,direct');
+                cycle_count(216,1)=cycle_count(216,1)+cycle;
+                inst_matrix(216,1)=cellstr('XRL direct');
                 
             case '66' %XRL A,@Ri
                 [PC,cycle,intmem_back]=XorACCUnd(PC,cycle,intmem_back,idatax_back,1);
                 freq_count(217,1)=freq_count(217,1)+1;
-                cycle_count(217,1)=cycle_count(217,1)+2;
+                cycle_count(217,1)=cycle_count(217,1)+cycle;
                 inst_matrix(217,1)=cellstr('XRL A,@R0');
             case '67' %XRL A,@Ri
                 [PC,cycle,intmem_back]=XorACCUnd(PC,cycle,intmem_back,idatax_back,2);
                 freq_count(218,1)=freq_count(218,1)+1;
-                cycle_count(218,1)=cycle_count(218,1)+2;
+                cycle_count(218,1)=cycle_count(218,1)+cycle;
                 inst_matrix(218,1)=cellstr('XRL A,@R1');
                 
             case '64' %XRL A,#data
                 [PC,cycle,intmem_back]=XrlDataToACC(PC,cycle,intmem_back,promem);
                 freq_count(219,1)=freq_count(219,1)+1;
-                cycle_count(219,1)=cycle_count(219,1)+2;
+                cycle_count(219,1)=cycle_count(219,1)+cycle;
                 inst_matrix(219,1)=cellstr('XRL A,#data');
                 
             case '62' %XRL direct,A
                 [PC,cycle,intmem_back]=XrlACCToDir(PC,cycle,intmem_back,promem);   
                 freq_count(220,1)=freq_count(220,1)+1;
-                cycle_count(220,1)=cycle_count(220,1)+2;
+                cycle_count(220,1)=cycle_count(220,1)+cycle;
                 inst_matrix(220,1)=cellstr('XRL direct,A');
                 
             case '63' %XRL direct,#data
                 [PC,cycle,intmem_back]=XrlDataToDir(PC,cycle,intmem_back,promem);
                 freq_count(221,1)=freq_count(221,1)+1;
-                cycle_count(221,1)=cycle_count(221,1)+3;
+                cycle_count(221,1)=cycle_count(221,1)+cycle;
                 inst_matrix(221,1)=cellstr('XRL direct,#data');
                 
             case 'F4' %CPL A
                 [PC,cycle,intmem_back]=CplACC(PC,cycle,intmem_back);
                 freq_count(222,1)=freq_count(222,1)+1;
-                cycle_count(222,1)=cycle_count(222,1)+1;
+                cycle_count(222,1)=cycle_count(222,1)+cycle;
                 inst_matrix(222,1)=cellstr('CPL A');
                 
             case '23' %RL A
                 [PC,cycle,intmem_back]=RotLeftACC(PC,cycle,intmem_back);
                 freq_count(223,1)=freq_count(223,1)+1;
-                cycle_count(223,1)=cycle_count(223,1)+1;
+                cycle_count(223,1)=cycle_count(223,1)+cycle;
                 inst_matrix(223,1)=cellstr('RL A');
                 
             case '33' %RLC A
                 [PC,cycle,intmem_back]=RotcLeftACC(PC,cycle,intmem_back);
                 freq_count(224,1)=freq_count(224,1)+1;
-                cycle_count(224,1)=cycle_count(224,1)+1;
+                cycle_count(224,1)=cycle_count(224,1)+cycle;
                 inst_matrix(224,1)=cellstr('RLC A');
                 %[PC,cycle,intmem_back]=RotLeftACC(PC,cycle,intmem_back);
                 
             case '03' %RR A
                 [PC,cycle,intmem_back]=RotRightACC(PC,cycle,intmem_back);
                 freq_count(225,1)=freq_count(225,1)+1;
-                cycle_count(225,1)=cycle_count(225,1)+1;
+                cycle_count(225,1)=cycle_count(225,1)+cycle;
                 inst_matrix(225,1)=cellstr('RR A');
                 
             case '13' %RRC A
                 [PC,cycle,intmem_back]=RotcRightACC(PC,cycle,intmem_back);
                 freq_count(226,1)=freq_count(226,1)+1;
-                cycle_count(226,1)=cycle_count(226,1)+1;
+                cycle_count(226,1)=cycle_count(226,1)+cycle;
                 inst_matrix(226,1)=cellstr('RRC A');
                 %[PC,cycle,intmem_back]=RotRightACC(PC,cycle,intmem_back);
             case 'C4' %SWAP A
                 [PC,cycle,intmem_back]=SwapACC(PC,cycle,intmem_back);
                 freq_count(227,1)=freq_count(227,1)+1;
-                cycle_count(227,1)=cycle_count(227,1)+1;
+                cycle_count(227,1)=cycle_count(227,1)+cycle;
                 inst_matrix(227,1)=cellstr('SWAP A');
                 
                 
@@ -1294,73 +1294,73 @@ function [intmem_back,extmem_back,idatax_back,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,fl
             case 'C3' %CLR C
                 [PC,cycle,intmem_back]=ClearC(PC,cycle,intmem_back);
                 freq_count(228,1)=freq_count(228,1)+1;
-                cycle_count(228,1)=cycle_count(228,1)+1;
+                cycle_count(228,1)=cycle_count(228,1)+cycle;
                 inst_matrix(228,1)=cellstr('CLR C');
                 
             case 'C2' %CLR bit
                 [PC,cycle,intmem_back]=ClearBit(PC,cycle,intmem_back,promem);
                 freq_count(229,1)=freq_count(229,1)+1;
-                cycle_count(229,1)=cycle_count(229,1)+2;
+                cycle_count(229,1)=cycle_count(229,1)+cycle;
                 inst_matrix(229,1)=cellstr('CLR bit');
                 
             case 'D3' %SETB C
                 [PC,cycle,intmem_back]=SETBC(PC,cycle,intmem_back);
                 freq_count(230,1)=freq_count(230,1)+1;
-                cycle_count(230,1)=cycle_count(230,1)+1;
+                cycle_count(230,1)=cycle_count(230,1)+cycle;
                 inst_matrix(230,1)=cellstr('SETB C');
             
             case 'D2' %SETB bit
                 [PC,cycle,intmem_back]=SetBit(PC,cycle,intmem_back,promem);
                 freq_count(231,1)=freq_count(231,1)+1;
-                cycle_count(231,1)=cycle_count(231,1)+2;
+                cycle_count(231,1)=cycle_count(231,1)+cycle;
                 inst_matrix(231,1)=cellstr('SETB bit');
                 
             case 'B3' %CPL C
                 [PC,cycle,intmem_back]=CPLC(PC,cycle,intmem_back);
                 freq_count(232,1)=freq_count(232,1)+1;
-                cycle_count(232,1)=cycle_count(232,1)+2;
+                cycle_count(232,1)=cycle_count(232,1)+cycle;
                 inst_matrix(232,1)=cellstr('CPL C');
                 
             case 'B2' %CPL bit
                 [PC,cycle,intmem_back]=CPLBit(PC,cycle,intmem_back,promem);
                 freq_count(233,1)=freq_count(233,1)+1;
-                cycle_count(233,1)=cycle_count(233,1)+2;
+                cycle_count(233,1)=cycle_count(233,1)+cycle;
                 inst_matrix(233,1)=cellstr('CPL bit');
                 
             case '82' %ANL C,bit
                 [PC,cycle,intmem_back]=ANLCBit(PC,cycle,intmem_back,promem);
                 freq_count(234,1)=freq_count(234,1)+1;
-                cycle_count(234,1)=cycle_count(234,1)+2;
+                cycle_count(234,1)=cycle_count(234,1)+cycle;
                 inst_matrix(234,1)=cellstr('ANL C,bit');
                 
             case 'B0' %ANL C,/bit
                 [PC,cycle,intmem_back]=ANLCUBit(PC,cycle,intmem_back,promem);
                 freq_count(235,1)=freq_count(235,1)+1;
-                cycle_count(235,1)=cycle_count(235,1)+2;
+                cycle_count(235,1)=cycle_count(235,1)+cycle;
                 inst_matrix(235,1)=cellstr('ANL C,/bit');
                 
             case '72' %ORL C,bit
                 [PC,cycle,intmem_back]=ORLCBit(PC,cycle,intmem_back,promem);
                 freq_count(236,1)=freq_count(236,1)+1;
-                cycle_count(236,1)=cycle_count(236,1)+2;
+                cycle_count(236,1)=cycle_count(236,1)+cycle;
                 inst_matrix(236,1)=cellstr('ORL C,bit');
                 
             case 'A0' %ORL C,/bit
                 [PC,cycle,intmem_back]=ORLCUBit(PC,cycle,intmem_back,promem);
                 freq_count(237,1)=freq_count(237,1)+1;
-                cycle_count(237,1)=cycle_count(237,1)+2;
+                cycle_count(237,1)=cycle_count(237,1)+cycle;
                 inst_matrix(237,1)=cellstr('ORL C,/bit');
                 
             case 'A2' %MOV C,bit
                 [PC,cycle,intmem_back]=MOVCBit(PC,cycle,intmem_back,promem);
                 freq_count(238,1)=freq_count(238,1)+1;
-                cycle_count(238,1)=cycle_count(238,1)+2;
+                cycle_count(238,1)=cycle_count(238,1)+cycle;
                 inst_matrix(238,1)=cellstr('MOV C,bit');
                 
             case '92' %MOV bit,C
                 [PC,cycle,intmem_back]=MOVBitC(PC,cycle,intmem_back,promem);
                 freq_count(239,1)=freq_count(239,1)+1;
-                cycle_count(239,1)=cycle_count(239,1)+2;
+                cycle_count(239,1)=cycle_count(239,1)+cycle;
                 inst_matrix(239,1)=cellstr('MOV bit,C');
                 
                 

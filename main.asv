@@ -1,5 +1,5 @@
 clear all;
-[promem,extmem,intmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,freq_count,cycle_count,inst_matrix]=InitializeReg();
+[promem,extmem,intmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,fre_max,fre_num,cycle_max,cycle_num]=InitializeReg();
 % %memory definition
 % promem=zeros(2^16,1);
 % extmem=zeros(2^16,1);
@@ -20,7 +20,7 @@ clear all;
 [promem]=loadprogram(promem);
 branchNumber=0;
 % [intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag]=startsim(promem,intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag);
-GUI1(intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,promem,branchNumber,freq_count,cycle_count,inst_matrix);
+GUI1(intmem,extmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,promem,branchNumber,fre_max,fre_num,cycle_max,cycle_num);
 
 
 

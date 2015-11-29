@@ -31,9 +31,9 @@ function [promem,extmem,intmem,idatax,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,flag,freq_
     idatax(80,1)=7;
     idatax(81,1)=1;
     idatax(82,1)=2;
-    freq_count=zeros(250,2);
-    cycle_count=zeros(250,2);
-    inst_matrix=cell(250,1);
+    freq_count=zeros(250,1);
+    cycle_count=zeros(250,1);
+    inst_matrix
     assignin('base','promem',promem);
     assignin('base','extmem',extmem);
     assignin('base','intmem',intmem);

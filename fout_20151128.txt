@@ -1,0 +1,983 @@
+	LJMP __program_start
+
+
+	NOP 
+	NOP 
+	NOP 
+	SJMP ?C_EXIT
+
+	LCALL __low_level_init
+
+
+	CJNE R1,#0x00,0x0010
+
+
+	LJMP ?call_main
+
+
+	CLR A
+	MOV R1,#0x21
+
+	MOV R0,#0x12
+
+	CJNE R0,#0x00,0x001A
+
+
+	SJMP __INIT_IDATA_I
+
+	MOV @R1,A
+	INC R1
+	DC8
+	MOV R4,A
+	MOV R0,#0x10
+
+	MOV DPTR,#0x0044
+
+
+	MOV R2,#0x10
+
+	CJNE R2,#0x00,0x002A
+
+
+	SJMP ?call_main
+
+	CLR A
+	MOVC A,@A+DPTR
+	INC DPTR
+	MOV @R0,A
+	INC R0
+	DJNZ R2,0x002B
+
+	LCALL main
+
+
+	LCALL ?C_EXIT
+
+
+	MOV PSW,#0x00
+
+
+	MOV SP,#0xBF
+
+
+	LJMP ?cmain
+
+
+	MOV R1,#0x01
+
+	RET 
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	DC8
+	XCH A,R2
+	PUSH A
+
+	MOV A,@R0
+	MOV @R1,A
+	INC R1
+	INC R0
+	DJNZ R2,0x0057
+
+	POP A
+
+	MOV R2,A
+	RET 
+	CLR C
+	CLR A
+	SUBB A,R0
+	MOV R0,A
+	CLR A
+	SUBB A,R1
+	MOV R1,A
+	LCALL ?US_DIV_MOD
+
+
+	SJMP 0x0093
+
+	CLR C
+	CLR A
+	SUBB A,R2
+	MOV R2,A
+	CLR A
+	SUBB A,R3
+	MOV R3,A
+	MOV A,R1
+	JB A.7,0x0060
+
+
+	LCALL ?US_DIV_MOD
+
+
+	CLR A
+	SUBB A,R0
+	MOV R0,A
+	CLR A
+	SUBB A,R1
+	MOV R1,A
+	RET 
+	CLR C
+	CLR A
+	SUBB A,R0
+	MOV R0,A
+	CLR A
+	SUBB A,R1
+	MOV R1,A
+	LCALL ?US_DIV_MOD
+
+
+	CLR A
+	SUBB A,R0
+	MOV R0,A
+	CLR A
+	SUBB A,R1
+	MOV R1,A
+	CLR C
+	CLR A
+	SUBB A,R2
+	MOV R2,A
+	CLR A
+	SUBB A,R3
+	MOV R3,A
+	RET 
+	MOV A,R3
+	JB A.7,0x006C
+
+
+	MOV A,R1
+	JB A.7,0x0081
+
+
+	CJNE R1,#0x00,0x00B4
+
+
+	CJNE R3,#0x00,0x00AF
+
+
+	MOV A,R0
+	MOV B,R2
+
+	DIV AB
+	MOV R0,A
+	MOV R2,B
+
+	RET 
+	CLR A
+	MOV R3,A
+	XCH A,R0
+	MOV R2,A
+	RET 
+	MOV A,R3
+	JNZ 0x00DA
+
+	MOV R3,#0x10
+
+	XCH A,R0
+	RLC A
+	XCH A,R0
+	XCH A,R1
+	RLC A
+	XCH A,R1
+	RLC A
+	JNC 0x00CA
+
+	CLR C
+	SUBB A,R2
+	CLR C
+	DJNZ R3,0x00BA
+
+	SJMP 0x00D0
+
+	SUBB A,R2
+	JNC 0x00CE
+
+	ADD A,R2
+	DJNZ R3,0x00BA
+
+	XCH A,R0
+	RLC A
+	CPL A
+	XCH A,R0
+	XCH A,R1
+	RLC A
+	CPL A
+	XCH A,R1
+	MOV R2,A
+	RET 
+	MOV B,#0x08
+
+
+	CLR A
+	XCH A,R0
+	RLC A
+	XCH A,R0
+	XCH A,R1
+	RLC A
+	XCH A,R1
+	RLC A
+	XCH A,R1
+	SUBB A,R2
+	XCH A,R1
+	SUBB A,R3
+	JNC 0x00EF
+
+	XCH A,R1
+	ADD A,R2
+	XCH A,R1
+	ADDC A,R3
+	DJNZ B,0x00DD
+
+
+	MOV R3,A
+	XCH A,R0
+	RLC A
+	CPL A
+	XCH A,R0
+	CLR A
+	XCH A,R1
+	MOV R2,A
+	RET 
+	JZ 0x010A
+
+	INC R0
+	XCH A,@R0
+	MOV C,A.7
+
+	RRC A
+	XCH A,@R0
+	DEC R0
+	XCH A,@R0
+	RRC A
+	XCH A,@R0
+	DJNZ A,0x00FC
+
+
+	RET 
+	JNZ 0x0111
+
+	RET 
+	JZ 0x011D
+
+	DEC R0
+	XCH A,@R0
+	CLR C
+	RLC A
+	XCH A,@R0
+	INC R0
+	XCH A,@R0
+	RLC A
+	XCH A,@R0
+	DJNZ A,0x010F
+
+
+	DEC R0
+	RET 
+	MOV A,SP
+
+	ADD A,#0x2A
+
+	MOV SP,A
+
+	MOV R0,#0x10
+
+	MOV A,SP
+
+	ADD A,#0xD7
+
+	MOV R1,A
+	MOV A,#0x10
+
+	LCALL ?MOVE_LONG8_IDATA_IDATA
+
+
+	MOV R0,#0x21
+
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	MOV R1,A
+	MOV A,#0x0A
+
+	LCALL ?MOVE_LONG8_IDATA_IDATA
+
+
+	MOV R0,#0x2B
+
+	MOV A,SP
+
+	ADD A,#0xEF
+
+	MOV R1,A
+	MOV A,#0x08
+
+	LCALL ?MOVE_LONG8_IDATA_IDATA
+
+
+	MOV R4,#0x00
+
+	MOV R0,#0x00
+
+	MOV R1,#0x00
+
+	MOV R2,#0x00
+
+	MOV R3,#0x00
+
+	MOV R6,#0x00
+
+	MOV R5,#0x00
+
+	MOV R4,#0x00
+
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	ADD A,R4
+	ADD A,#0x02
+
+	MOV R0,A
+	MOV A,@R0
+	PUSH A
+
+	MOV A,SP
+
+	ADD A,#0xEE
+
+	ADD A,R4
+	MOV R0,A
+	POP A
+
+	XCH A,@R0
+	XRL A,@R0
+	MOV @R0,A
+	INC R4
+	MOV A,R4
+	CLR C
+	SUBB A,#0x08
+
+	JC 0x0158
+
+	DEC R4
+	MOV A,SP
+
+	ADD A,#0xEF
+
+	ADD A,R4
+	MOV R0,A
+	MOV A,@R0
+	SWAP A
+	ANL A,#0x0F
+
+	MOV R0,A
+	MOV A,SP
+
+	ADD A,#0xD7
+
+	ADD A,R0
+	MOV R0,A
+	MOV A,@R0
+	SWAP A
+	ANL A,#0xF0
+
+	MOV R1,A
+	MOV A,SP
+
+	ADD A,#0xEF
+
+	ADD A,R4
+	MOV R0,A
+	MOV A,@R0
+	ANL A,#0x0F
+
+	MOV R0,A
+	MOV A,SP
+
+	ADD A,#0xD7
+
+	ADD A,R0
+	MOV R0,A
+	MOV A,@R0
+	MOV R0,A
+	MOV A,R1
+	ORL A,R0
+	PUSH A
+
+	MOV A,SP
+
+	ADD A,#0xEE
+
+	ADD A,R4
+	MOV R0,A
+	POP A
+
+	MOV @R0,A
+	MOV A,R4
+	CLR C
+	SUBB A,#0x01
+
+	JNC 0x0175
+
+	MOV R4,#0x00
+
+	SJMP 0x01BE
+
+	MOV A,SP
+
+	ADD A,#0xE7
+
+	ADD A,R4
+	MOV R0,A
+	MOV @R0,#0x00
+
+	INC R4
+	MOV A,R4
+	CLR C
+	SUBB A,#0x08
+
+	JC 0x01B5
+
+	MOV R4,#0x00
+
+	SJMP 0x0241
+
+	MOV A,R4
+	MOV R0,A
+	MOV R1,#0x00
+
+	MOV A,R0
+	MOV B,#0x10
+
+
+	MUL AB
+	XCH A,R0
+	MOV R2,B
+
+	MOV B,#0x00
+
+
+	MUL AB
+	ADD A,R2
+	MOV R2,A
+	MOV B,#0x10
+
+
+	MOV A,R1
+	MUL AB
+	ADD A,R2
+	MOV R1,A
+	MOV R2,#0x3F
+
+	MOV R3,#0x00
+
+	LCALL ?S_DIV_MOD
+
+
+	MOV A,R2
+	MOV R0,A
+	MOV A,#0x3F
+
+	XRL A,R4
+	JNZ 0x01F1
+
+	MOV R0,#0x3F
+
+	MOV B,#0x08
+
+
+	MOV A,R4
+	DIV AB
+	MOV R1,A
+	MOV A,R4
+	MOV B,#0x08
+
+
+	DIV AB
+	MOV A,B
+
+	MOV R2,B
+
+	MOV B,#0x08
+
+
+	MOV A,R0
+	DIV AB
+	MOV R3,A
+	MOV A,R0
+	MOV B,#0x08
+
+
+	DIV AB
+	MOV A,B
+
+	MOV R6,B
+
+	MOV A,SP
+
+	ADD A,#0xEF
+
+	ADD A,R1
+	MOV R0,A
+	MOV V0,@R0
+
+	MOV V1,#0x00
+
+
+	MOV A,R2
+	MOV R0,#0x08
+
+	LCALL ?SS_SHR
+
+
+	MOV A,V0
+
+	ANL A,#0x01
+
+	MOV V0,A
+
+	MOV A,V1
+
+	ANL A,#0x00
+
+	MOV V1,A
+
+	MOV A,R6
+	MOV R0,#0x08
+
+	LCALL ?S_SHL
+
+
+	MOV A,V0
+
+	MOV A,SP
+
+	INC A
+	ADD A,#0xE6
+
+	ADD A,R3
+	MOV R0,A
+	MOV A,V0
+
+	XCH A,@R0
+	ORL A,@R0
+	MOV @R0,A
+	INC R4
+	MOV A,R4
+	CLR C
+	SUBB A,#0x40
+
+	JC 0x01C8
+
+	MOV R4,#0x00
+
+	SJMP 0x025A
+
+	MOV A,SP
+
+	ADD A,#0xE7
+
+	ADD A,R4
+	MOV R1,A
+	MOV A,SP
+
+	ADD A,#0xEF
+
+	ADD A,R4
+	MOV R0,A
+	MOV A,@R1
+	MOV @R0,A
+	INC R4
+	MOV A,R4
+	CLR C
+	SUBB A,#0x08
+
+	JC 0x024B
+
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	MOV R0,A
+	MOV A,@R0
+	MOV R2,A
+	MOV A,SP
+
+	ADD A,#0xF8
+
+	MOV R0,A
+	MOV A,@R0
+	MOV R3,A
+	MOV R4,#0x00
+
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	ADD A,R4
+	ADD A,#0x02
+
+	MOV R1,A
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	ADD A,R4
+	MOV R0,A
+	MOV A,@R1
+	MOV @R0,A
+	INC R4
+	MOV A,R4
+	CLR C
+	SUBB A,#0x08
+
+	JC 0x0270
+
+	MOV A,SP
+
+	ADD A,#0xFF
+
+	MOV R0,A
+	MOV A,R2
+	MOV @R0,A
+	MOV A,SP
+
+	MOV R0,SP
+
+	MOV A,R3
+	MOV @R0,A
+	MOV R4,#0x00
+
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	MOV R0,A
+	MOV A,@R0
+	ANL A,#0x07
+
+	MOV R2,A
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	ADD A,R4
+	ADD A,#0x01
+
+	MOV R0,A
+	MOV A,@R0
+	SWAP A
+	RLC A
+	ANL A,#0xE0
+
+	MOV R1,A
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	ADD A,R4
+	MOV R0,A
+	MOV A,@R0
+	RRC A
+	RRC A
+	RRC A
+	ANL A,#0x1F
+
+	ORL A,R1
+	PUSH A
+
+	MOV A,SP
+
+	ADD A,#0xF6
+
+	ADD A,R4
+	MOV R0,A
+	POP A
+
+	MOV @R0,A
+	INC R4
+	MOV A,R4
+	CLR C
+	SUBB A,#0x09
+
+	JC 0x029F
+
+	MOV A,R2
+	SWAP A
+	RLC A
+	ANL A,#0xE0
+
+	MOV R1,A
+	MOV A,SP
+
+	MOV R0,SP
+
+	MOV A,@R0
+	RRC A
+	RRC A
+	RRC A
+	ANL A,#0x1F
+
+	ORL A,R1
+	PUSH A
+
+	MOV A,SP
+
+	ADD A,#0xFF
+
+	MOV R0,A
+	POP A
+
+	MOV @R0,A
+	MOV A,SP
+
+	MOV R0,SP
+
+	MOV A,@R0
+	ANL A,#0x0F
+
+	MOV R1,A
+	MOV A,SP
+
+	MOV R0,SP
+
+	MOV A,@R0
+	SWAP A
+	ANL A,#0x0F
+
+	MOV R0,A
+	MOV A,SP
+
+	ADD A,#0xD7
+
+	ADD A,R0
+	MOV R0,A
+	MOV A,@R0
+	SWAP A
+	ANL A,#0xF0
+
+	ORL A,R1
+	PUSH A
+
+	MOV A,SP
+
+	ADD A,#0xFF
+
+	MOV R0,A
+	POP A
+
+	MOV @R0,A
+	MOV V0,R5
+
+	MOV V1,#0x00
+
+
+	MOV A,V0
+
+	ADD A,#0x01
+
+	MOV R0,A
+	MOV A,V1
+
+	ADDC A,#0x00
+
+	MOV R1,A
+	MOV R2,#0x02
+
+	MOV R3,#0x00
+
+	LCALL ?S_DIV_MOD
+
+
+	MOV V0,R2
+
+	MOV V1,R3
+
+	MOV A,#0x01
+
+	XRL A,V0
+
+	JNZ 0x0331
+
+	MOV A,#0x00
+
+	XRL A,V1
+
+	JNZ 0x033D
+
+	MOV A,SP
+
+	ADD A,#0xF8
+
+	MOV R0,A
+	XCH A,@R0
+	XRL A,#0x80
+
+	MOV @R0,A
+	MOV A,@R0
+	MOV A,SP
+
+	ADD A,#0xF9
+
+	MOV R0,A
+	MOV A,@R0
+	ANL A,#0x0F
+
+	PUSH A
+
+	MOV V0,R5
+
+	MOV V1,#0x00
+
+
+	MOV A,V0
+
+	ADD A,#0x01
+
+	MOV V0,A
+
+	MOV A,V1
+
+	ADDC A,#0x00
+
+	MOV V1,A
+
+	MOV A,#0x01
+
+	MOV R0,#0x08
+
+	LCALL ?SS_SHR
+
+
+	POP A
+
+	XRL A,V0
+
+	MOV R1,A
+	MOV A,SP
+
+	ADD A,#0xF9
+
+	MOV R0,A
+	MOV A,@R0
+	ANL A,#0xF0
+
+	ORL A,R1
+	PUSH A
+
+	MOV A,SP
+
+	ADD A,#0xF8
+
+	MOV R0,A
+	POP A
+
+	MOV @R0,A
+	INC R5
+	MOV A,R5
+	CLR C
+	SUBB A,#0x1F
+
+	JNC 0x0381
+
+	LJMP 0x0156
+
+
+	MOV R4,#0x00
+
+	MOV A,SP
+
+	ADD A,#0xF7
+
+	ADD A,R4
+	ADD A,#0x02
+
+	MOV R0,A
+	MOV A,@R0
+	PUSH A
+
+	MOV A,SP
+
+	ADD A,#0xEE
+
+	ADD A,R4
+	MOV R0,A
+	POP A
+
+	XCH A,@R0
+	XRL A,@R0
+	MOV @R0,A
+	INC R4
+	MOV A,R4
+	CLR C
+	SUBB A,#0x08
+
+	JC 0x0383
+
+	MOV R2,#0x00
+
+	MOV R3,#0x00
+
+	MOV B.0,C
+
+	MOV A,SP
+
+	ADD A,#0xD6
+
+	MOV SP,A
+
+	MOV C,B.0
+
+	RET 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 
+	NOP 

@@ -56,8 +56,9 @@ fontweight = 'normal';
 visible = 'on';
 
 foregroundcolor = [1,1,1];
-backgroundcolor = [0.7725,0.8431,0.9608];
-panelbackgroundcolor = [0.4314,0.5882,0.8431];
+backgroundcolor = [0.231,0.553,0.741];
+% panelbackgroundcolor = [0.4314,0.5882,0.8431];
+panelbackgroundcolor = [0.231,0.553,0.741];
 titlehighlightcolor = [1,0.8,0];
 
 horizontalalignment = 'center';
