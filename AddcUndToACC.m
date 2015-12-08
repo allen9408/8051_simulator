@@ -57,7 +57,7 @@ function [PC_back,cycle_back,intmem_back]=AddcUndToACC(PC,cycle,intmem,idatax,i)
     P=0;
     pb=dec2bin(tmp.data,8);
     for j=1:8
-        if pb(j,1)==1
+        if pb(j)==1
             P=P+1;
         end
     end

@@ -164,7 +164,8 @@ function [intmem_back,extmem_back,idatax_back,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,fl
                 
             case '00' %NOP
                 PC=PC+1;
-                cycle=cycle+1;
+                %TODO:cycle
+                cycle=cycle+0;
                 freq_count(27,1)=freq_count(27,1)+1;
                 cycle_count(27,1)=cycle_count(27,1)+1;
                 inst_matrix(27,1)=cellstr('NOP');
@@ -1009,7 +1010,8 @@ function [intmem_back,extmem_back,idatax_back,PC,cycle,ACC,B,PSW,SP,DPTR,Rn,C,fl
                 inst_matrix(178,1)=cellstr('DIV A,B');
                 
             case 'D4' %DA A
-                [PC,cycle]=DataAdj(PC,cycle);
+                %[PC,cycle]=DataAdj(PC,cycle);
+                [PC,cycle,intmem_back,idatax_back]=permutation(PC,cycle,intmem_back,idatax_back);
                 freq_count(179,1)=freq_count(179,1)+1;
                 cycle_count(179,1)=cycle_count(179,1)+1;
                 inst_matrix(179,1)=cellstr('DA A');
